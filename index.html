@@ -1,0 +1,1597 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>KORV Aviation</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+
+    <section id="login" class="screen login-screen">
+
+        <div class="login-container">
+
+            <a href="#login" class="back-button">‹</a>
+
+            <div class="login-logo">
+
+                <img src="corvo.png" alt="Logo KORV">
+
+                <h1>
+                    KORV
+                    <span>aviation</span>
+                </h1>
+
+            </div>
+
+
+            <div class="login-form">
+
+                <label for="email">
+                    E-MAIL*
+                </label>
+
+                <input
+                    type="email"
+                    id="email"
+                    placeholder=""
+                >
+
+
+                <label for="senha">
+                    SENHA*
+                </label>
+
+                <input
+                    type="password"
+                    id="senha"
+                    placeholder=""
+                >
+
+
+                <a href="#home" class="primary-button login-button">
+                    ENTRAR
+                </a>
+
+            </div>
+
+
+            <a href="#login" class="register-link">
+                CADASTRAR
+            </a>
+
+            <a href="#login" class="forgot-link">
+                Esqueci minha senha
+            </a>
+
+        </div>
+
+    </section>
+
+
+    
+  
+
+    <section id="home" class="screen app-screen">
+
+       
+        <input
+            type="checkbox"
+            id="menu-toggle"
+        >
+      
+<label
+    for="menu-toggle"
+    class="menu-overlay"
+></label>
+
+
+
+<aside class="side-menu">
+
+    <label
+        for="menu-toggle"
+        class="close-menu"
+    >
+        ×
+    </label>
+
+
+    <div class="menu-logo">
+
+        <img
+            src="imagens/corvo.png"
+            alt="Corvo KORV"
+        >
+
+        <h2>
+            KORV
+            <span>aviation</span>
+        </h2>
+
+    </div>
+
+
+    <nav class="menu-navigation">
+
+        <label for="menu-toggle">
+            <a href="#home">
+                <span>✦</span>
+                Início
+            </a>
+        </label>
+
+
+        <label for="menu-toggle">
+            <a href="#planejar">
+                <span>✈</span>
+                Planejar voo
+            </a>
+        </label>
+
+
+        <label for="menu-toggle">
+            <a href="#viagens">
+                <span>▣</span>
+                Minhas viagens
+            </a>
+        </label>
+
+
+        <label for="menu-toggle">
+            <a href="#aeronaves">
+                <span>✈</span>
+                Aeronaves
+            </a>
+        </label>
+
+
+        <label for="menu-toggle">
+            <a href="#destinos">
+                <span>◇</span>
+                Destinos
+            </a>
+        </label>
+
+
+        <label for="menu-toggle">
+            <a href="#servicos">
+                <span>◆</span>
+                Serviços
+            </a>
+        </label>
+
+
+        <label for="menu-toggle">
+            <a href="#perfil">
+                <span>♙</span>
+                Perfil
+            </a>
+        </label>
+
+
+        <label for="menu-toggle">
+            <a href="#configuracoes">
+                <span>⚙</span>
+                Configurações
+            </a>
+        </label>
+
+
+        <label for="menu-toggle">
+            <a href="#suporte">
+                <span>?</span>
+                Suporte
+            </a>
+        </label>
+
+
+        <label for="menu-toggle">
+            <a href="#login" class="menu-logout">
+                <span>↪</span>
+                Sair
+            </a>
+        </label>
+
+    </nav>
+
+</aside>
+
+
+    
+
+        <aside class="side-menu">
+
+            <label
+                for="menu-toggle"
+                class="close-menu"
+            >
+                ×
+            </label>
+
+
+            <div class="menu-logo">
+
+                <img
+                    src="corvo.png"
+                    alt="Corvo KORV"
+                >
+
+                <h2>
+                    KORV
+                    <span>aviation</span>
+                </h2>
+
+            </div>
+
+
+            <nav class="menu-navigation">
+
+                <a href="#home" class="menu-active">
+                    <span>✦</span>
+                    Início
+                </a>
+
+                <a href="#planejar">
+                    <span>✈</span>
+                    Planejar voo
+                </a>
+
+                <a href="#viagens">
+                    <span>▣</span>
+                    Minhas viagens
+                </a>
+
+                <a href="#aeronaves">
+                    <span>✈</span>
+                    Aeronaves
+                </a>
+
+                <a href="#destinos">
+                    <span>◇</span>
+                    Destinos
+                </a>
+
+                <a href="#servicos">
+                    <span>◆</span>
+                    Serviços
+                </a>
+
+                <a href="#perfil">
+                    <span>♙</span>
+                    Perfil
+                </a>
+
+                <a href="#configuracoes">
+                    <span>⚙</span>
+                    Configurações
+                </a>
+
+                <a href="#suporte">
+                    <span>?</span>
+                    Suporte
+                </a>
+
+                <a href="#login" class="menu-logout">
+                    <span>↪</span>
+                    Sair
+                </a>
+
+            </nav>
+
+        </aside>
+
+
+        
+
+        <div class="page-content">
+
+            <header class="app-header">
+
+                <div class="brand">
+
+                    <strong>KORV</strong>
+
+                    <span>aviation</span>
+
+                </div>
+
+
+                <label
+                    for="menu-toggle"
+                    class="menu-button"
+                >
+                    ☰
+                </label>
+
+            </header>
+
+
+            
+
+            <section class="hero">
+
+                <div class="hero-content">
+
+                    <p class="hero-greeting">
+                        Boa noite,
+                    </p>
+
+                    <h1>
+                        Nicolas<span>.</span>
+                    </h1>
+
+                    <p class="hero-description">
+                        Pronto para a próxima
+                        <br>
+                        experiência <strong>Korv.</strong>
+                    </p>
+
+                </div>
+
+            </section>
+
+
+            
+
+            <section class="flight-card">
+
+                <p class="section-label">
+                    ✈ &nbsp; PRÓXIMO VOO
+                </p>
+
+
+                <div class="route">
+
+                    <div class="airport">
+
+                        <strong>
+                            GRU
+                        </strong>
+
+                        <small>
+                            São Paulo
+                        </small>
+
+                    </div>
+
+
+                    <div class="route-line">
+                        ───── ✈ ─────
+                    </div>
+
+
+                    <div class="airport">
+
+                        <strong>
+                            MIA
+                        </strong>
+
+                        <small>
+                            Miami
+                        </small>
+
+                    </div>
+
+                </div>
+
+
+                <div class="flight-info">
+
+                    <span>
+                        24 AGO · 09:30
+                    </span>
+
+                    <span>
+                        Gulfstream G650
+                    </span>
+
+                </div>
+
+
+                <a href="#viagens" class="details-link">
+                    Ver detalhes →
+                </a>
+
+            </section>
+
+
+            
+
+            <a
+                href="#planejar"
+                class="primary-button plan-button"
+            >
+
+                <span>✈</span>
+
+                PLANEJAR MEU VOO
+
+                <span>→</span>
+
+            </a>
+
+
+            
+
+            <section class="featured-destinations">
+
+                <div class="section-heading">
+
+                    <h2>
+                        DESTINOS EM DESTAQUE
+                    </h2>
+
+                    <a href="#destinos">
+                        Ver todos →
+                    </a>
+
+                </div>
+
+
+                <div class="destination-grid">
+
+                    <a
+                        href="#destinos"
+                        class="destination-card miami"
+                    >
+
+                        <div>
+
+                            <h3>
+                                Miami
+                            </h3>
+
+                            <p>
+                                EUA
+                            </p>
+
+                        </div>
+
+                    </a>
+
+
+                    <a
+                        href="#destinos"
+                        class="destination-card paris"
+                    >
+
+                        <div>
+
+                            <h3>
+                                Paris
+                            </h3>
+
+                            <p>
+                                França
+                            </p>
+
+                        </div>
+
+                    </a>
+
+                </div>
+
+            </section>
+
+        </div>
+
+
+    
+
+
+        <nav class="bottom-navigation">
+
+            <a
+                href="#home"
+                class="bottom-active"
+            >
+                <span>⌂</span>
+                Início
+            </a>
+
+
+            <a href="#planejar">
+
+                <span>✈</span>
+                Voar
+
+            </a>
+
+
+            <a href="#viagens">
+
+                <span>▣</span>
+                Viagens
+
+            </a>
+
+
+            <a href="#perfil">
+
+                <span>♙</span>
+                Perfil
+
+            </a>
+
+        </nav>
+
+    </section>
+
+
+    <!-- =====================================================
+         PLANEJAR VOO
+    ====================================================== -->
+
+    <section id="planejar" class="screen internal-screen">
+
+        <header class="internal-header">
+
+            <a href="#home" class="back-arrow">
+                ‹
+            </a>
+
+            <h1>
+                Planejar voo
+            </h1>
+
+            <a href="#home" class="header-home">
+                K
+            </a>
+
+        </header>
+
+
+        <main class="internal-content">
+
+            <p class="section-label">
+                SUA PRÓXIMA EXPERIÊNCIA
+            </p>
+
+            <h2 class="internal-title">
+                Onde vamos?
+            </h2>
+
+
+            <div class="field">
+
+                <label>
+                    ORIGEM
+                </label>
+
+                <select>
+
+                    <option>
+                        São Paulo — GRU
+                    </option>
+
+                    <option>
+                        Rio de Janeiro — GIG
+                    </option>
+
+                    <option>
+                        Brasília — BSB
+                    </option>
+
+                </select>
+
+            </div>
+
+
+            <div class="swap-button">
+                ⇅
+            </div>
+
+
+            <div class="field">
+
+                <label>
+                    DESTINO
+                </label>
+
+                <select>
+
+                    <option>
+                        Miami — MIA
+                    </option>
+
+                    <option>
+                        Paris — CDG
+                    </option>
+
+                    <option>
+                        Dubai — DXB
+                    </option>
+
+                    <option>
+                        Londres — LHR
+                    </option>
+
+                </select>
+
+            </div>
+
+
+            <div class="two-fields">
+
+                <div class="field">
+
+                    <label>
+                        DATA
+                    </label>
+
+                    <input type="date">
+
+                </div>
+
+
+                <div class="field">
+
+                    <label>
+                        PASSAGEIROS
+                    </label>
+
+                    <select>
+
+                        <option>1</option>
+                        <option>2</option>
+                        <option>3</option>
+                        <option>4</option>
+                        <option>5+</option>
+
+                    </select>
+
+                </div>
+
+            </div>
+
+
+            <a
+                href="#aeronaves"
+                class="primary-button continue-button"
+            >
+                ESCOLHER AERONAVE →
+            </a>
+
+        </main>
+
+    </section>
+    <!-- =====================================================
+     PAGAMENTO
+====================================================== -->
+
+<section id="pagamento" class="screen internal-screen">
+
+    <header class="internal-header">
+
+        <a href="#planejar" class="back-arrow">
+            ‹
+        </a>
+
+        <h1>
+            Pagamento
+        </h1>
+
+        <a href="#home" class="header-home">
+            K
+        </a>
+
+    </header>
+
+
+    <main class="internal-content">
+
+        <p class="section-label">
+            RESUMO DA VIAGEM
+        </p>
+
+
+        <div class="payment-route">
+
+            <div>
+                <strong>GRU</strong>
+                <small>São Paulo</small>
+            </div>
+
+            <span>✈</span>
+
+            <div>
+                <strong>MIA</strong>
+                <small>Miami</small>
+            </div>
+
+        </div>
+
+
+        <div class="payment-info">
+
+            <span>
+                24 AGO · 09:30
+            </span>
+
+            <span>
+                Gulfstream G650
+            </span>
+
+            <span>
+                8 passageiros
+            </span>
+
+        </div>
+
+
+        <p class="section-label payment-label">
+            FORMA DE PAGAMENTO
+        </p>
+
+
+        <div class="payment-method">
+
+            <div class="card-icon">
+                ◇
+            </div>
+
+            <div>
+
+                <strong>
+                    •••• 4821
+                </strong>
+
+                <small>
+                    Mastercard
+                </small>
+
+            </div>
+
+            <a href="#pagamento">
+                Alterar
+            </a>
+
+        </div>
+
+
+        <div class="total-payment">
+
+            <span>
+                VALOR TOTAL
+            </span>
+
+            <strong>
+                R$ 84.500,00
+            </strong>
+
+        </div>
+
+
+        <a
+            href="#aviao-chegando"
+            class="primary-button continue-button"
+        >
+            CONFIRMAR E PAGAR →
+        </a>
+
+    </main>
+
+</section>
+<!-- =====================================================
+     AVIÃO CHEGANDO
+====================================================== -->
+
+<section id="aviao-chegando" class="screen arrival-screen">
+
+    <div class="arrival-background"></div>
+
+
+    <div class="arrival-content">
+
+        <div class="arrival-logo">
+            KORV
+        </div>
+
+
+        <div class="arrival-icon">
+            ✦
+        </div>
+
+
+        <p class="section-label">
+            KORV AVIATION
+        </p>
+
+
+        <h1>
+            Sua aeronave
+            <br>
+            está a caminho.
+        </h1>
+
+
+        <p class="arrival-aircraft">
+            Gulfstream G650
+        </p>
+
+
+        <div class="arrival-route">
+
+            <span>
+                GRU
+                <small>São Paulo</small>
+            </span>
+
+            <div>
+                ───── ✈ ─────
+            </div>
+
+            <span>
+                MIA
+                <small>Miami</small>
+            </span>
+
+        </div>
+
+
+        <div class="arrival-time">
+
+            <small>
+                CHEGADA ESTIMADA
+            </small>
+
+            <strong>
+                08:42
+            </strong>
+
+        </div>
+
+
+        <p class="arrival-message">
+            Seu piloto já está a caminho
+            do aeroporto.
+        </p>
+
+
+        <div class="arrival-data">
+
+            <div>
+
+                <small>
+                    VOO
+                </small>
+
+                <strong>
+                    KRV 084
+                </strong>
+
+            </div>
+
+
+            <div>
+
+                <small>
+                    PORTÃO
+                </small>
+
+                <strong>
+                    EXECUTIVO 03
+                </strong>
+
+            </div>
+
+        </div>
+
+
+        <a
+            href="#viagens"
+            class="primary-button arrival-button"
+        >
+            VER MINHA VIAGEM
+        </a>
+
+    </div>
+
+</section>
+
+
+    <!-- =====================================================
+         VIAGENS
+    ====================================================== -->
+
+    <section id="viagens" class="screen internal-screen">
+
+        <header class="internal-header">
+
+            <a href="#home" class="back-arrow">
+                ‹
+            </a>
+
+            <h1>
+                Minhas viagens
+            </h1>
+
+            <a href="#home" class="header-home">
+                K
+            </a>
+
+        </header>
+
+
+        <main class="internal-content">
+
+            <p class="section-label">
+                PRÓXIMA VIAGEM
+            </p>
+
+
+            <article class="trip-card">
+
+                <div class="trip-top">
+
+                    <span>
+                        CONFIRMADO
+                    </span>
+
+                    <small>
+                        24 AGO
+                    </small>
+
+                </div>
+
+
+                <div class="route">
+
+                    <div class="airport">
+
+                        <strong>
+                            GRU
+                        </strong>
+
+                        <small>
+                            São Paulo
+                        </small>
+
+                    </div>
+
+
+                    <div class="route-line">
+                        ───── ✈ ─────
+                    </div>
+
+
+                    <div class="airport">
+
+                        <strong>
+                            MIA
+                        </strong>
+
+                        <small>
+                            Miami
+                        </small>
+
+                    </div>
+
+                </div>
+
+
+                <div class="trip-data">
+
+                    <span>
+                        09:30
+                    </span>
+
+                    <span>
+                        Gulfstream G650
+                    </span>
+
+                </div>
+
+
+                <a href="#aeronaves">
+                    Ver aeronave →
+                </a>
+
+            </article>
+
+
+            <p class="section-label history-label">
+                HISTÓRICO
+            </p>
+
+
+            <article class="past-trip">
+
+                <div>
+
+                    <strong>
+                        MIA → GRU
+                    </strong>
+
+                    <small>
+                        12 JUL 2026
+                    </small>
+
+                </div>
+
+                <span>
+                    Concluído
+                </span>
+
+            </article>
+
+
+            <article class="past-trip">
+
+                <div>
+
+                    <strong>
+                        GRU → LIS
+                    </strong>
+
+                    <small>
+                        02 JUN 2026
+                    </small>
+
+                </div>
+
+                <span>
+                    Concluído
+                </span>
+
+            </article>
+
+        </main>
+
+    </section>
+
+
+    
+
+    <section id="aeronaves" class="screen internal-screen">
+
+        <header class="internal-header">
+
+            <a href="#home" class="back-arrow">
+                ‹
+            </a>
+
+            <h1>
+                Nossa frota
+            </h1>
+
+            <a href="#home" class="header-home">
+                K
+            </a>
+
+        </header>
+
+
+        <main class="internal-content">
+
+            <p class="section-label">
+                KORV AVIATION
+            </p>
+
+            <h2 class="internal-title">
+                Escolha sua experiência.
+            </h2>
+
+
+            <article class="aircraft-card">
+
+                <img
+                    src="BLCKS.jpg"
+                    alt="Gulfstream G650"
+                >
+
+                <div class="aircraft-info">
+
+                    <p class="aircraft-category">
+                        LONG RANGE
+                    </p>
+
+                    <h3>
+                        Gulfstream G650
+                    </h3>
+
+                    <span>
+                        Até 14 passageiros
+                    </span>
+
+                    <a href="#pagamento>
+                        Selecionar aeronave →
+                    </a>
+
+                </div>
+
+            </article>
+
+
+            <article class="aircraft-card">
+
+                <img
+                    src="drake.jpg"
+                    alt="Praetor 600"
+                >
+
+                <div class="aircraft-info">
+
+                    <p class="aircraft-category">
+                        EXECUTIVE
+                    </p>
+
+                    <h3>
+                        Praetor 600
+                    </h3>
+
+                    <span>
+                        Até 9 passageiros
+                    </span>
+
+                    <a href="#pagamento">
+                        Selecionar aeronave →
+                    </a>
+
+                </div>
+
+            </article>
+
+        </main>
+
+    </section>
+
+
+    <!-- =====================================================
+         DESTINOS
+    ====================================================== -->
+
+    <section id="destinos" class="screen internal-screen">
+
+        <header class="internal-header">
+
+            <a href="#home" class="back-arrow">
+                ‹
+            </a>
+
+            <h1>
+                Destinos
+            </h1>
+
+            <a href="#home" class="header-home">
+                K
+            </a>
+
+        </header>
+
+
+        <main class="internal-content">
+
+            <p class="section-label">
+                EXPLORE O MUNDO
+            </p>
+
+            <h2 class="internal-title">
+                Para onde vamos?
+            </h2>
+
+
+            <div class="destination-large miami">
+
+                <div>
+
+                    <p>
+                        EUA
+                    </p>
+
+                    <h3>
+                        Miami
+                    </h3>
+
+                </div>
+
+            </div>
+
+
+            <div class="destination-large paris">
+
+                <div>
+
+                    <p>
+                        FRANÇA
+                    </p>
+
+                    <h3>
+                        Paris
+                    </h3>
+
+                </div>
+
+            </div>
+
+
+            <a
+                href="#planejar"
+                class="primary-button continue-button"
+            >
+                PLANEJAR VIAGEM →
+            </a>
+
+        </main>
+
+    </section>
+
+
+    <!-- =====================================================
+         SERVIÇOS
+    ====================================================== -->
+
+    <section id="servicos" class="screen internal-screen">
+
+        <header class="internal-header">
+
+            <a href="#home" class="back-arrow">
+                ‹
+            </a>
+
+            <h1>
+                Serviços
+            </h1>
+
+            <a href="#home" class="header-home">
+                K
+            </a>
+
+        </header>
+
+
+        <main class="internal-content">
+
+            <p class="section-label">
+                KORV EXPERIENCE
+            </p>
+
+            <h2 class="internal-title">
+                Tudo pensado para você.
+            </h2>
+
+
+            <div class="service-list">
+
+                <article>
+
+                    <span>✈</span>
+
+                    <div>
+
+                        <h3>
+                            Concierge aéreo
+                        </h3>
+
+                        <p>
+                            Planejamento personalizado
+                            para cada etapa da sua viagem.
+                        </p>
+
+                    </div>
+
+                </article>
+
+
+                <article>
+
+                    <span>◇</span>
+
+                    <div>
+
+                        <h3>
+                            Atendimento exclusivo
+                        </h3>
+
+                        <p>
+                            Suporte dedicado quando
+                            você precisar.
+                        </p>
+
+                    </div>
+
+                </article>
+
+
+                <article>
+
+                    <span>◆</span>
+
+                    <div>
+
+                        <h3>
+                            Experiência personalizada
+                        </h3>
+
+                        <p>
+                            Cada detalhe da viagem
+                            adaptado às suas preferências.
+                        </p>
+
+                    </div>
+
+                </article>
+
+            </div>
+
+        </main>
+
+    </section>
+
+
+
+
+    <section id="perfil" class="screen internal-screen">
+
+        <header class="internal-header">
+
+            <a href="#home" class="back-arrow">
+                ‹
+            </a>
+
+            <h1>
+                Meu perfil
+            </h1>
+
+            <a href="#home" class="header-home">
+                K
+            </a>
+
+        </header>
+
+
+        <main class="internal-content">
+
+            <div class="profile">
+
+                <div class="profile-avatar">
+                    N
+                </div>
+
+                <h2>
+                    Nicolas
+                </h2>
+
+                <p>
+                    Cliente Korv
+                </p>
+
+            </div>
+
+
+            <div class="profile-options">
+
+                <a href="#configuracoes">
+                    <span>♙</span>
+                    Dados pessoais
+                    <b>›</b>
+                </a>
+
+                <a href="#configuracoes">
+                    <span>◇</span>
+                    Preferências
+                    <b>›</b>
+                </a>
+
+                <a href="#viagens">
+                    <span>▣</span>
+                    Histórico de viagens
+                    <b>›</b>
+                </a>
+
+                <a href="#suporte">
+                    <span>?</span>
+                    Ajuda e suporte
+                    <b>›</b>
+                </a>
+
+            </div>
+
+        </main>
+
+    </section>
+
+
+    
+
+    <section id="configuracoes" class="screen internal-screen">
+
+        <header class="internal-header">
+
+            <a href="#home" class="back-arrow">
+                ‹
+            </a>
+
+            <h1>
+                Configurações
+            </h1>
+
+            <a href="#home" class="header-home">
+                K
+            </a>
+
+        </header>
+
+
+        <main class="internal-content">
+
+            <p class="section-label">
+                PREFERÊNCIAS
+            </p>
+
+            <div class="settings-list">
+
+                <a href="#configuracoes">
+
+                    <div>
+                        <strong>
+                            Notificações
+                        </strong>
+
+                        <small>
+                            Alertas sobre seus voos
+                        </small>
+                    </div>
+
+                    <b>
+                        ›
+                    </b>
+
+                </a>
+
+
+                <a href="#configuracoes">
+
+                    <div>
+                        <strong>
+                            Idioma
+                        </strong>
+
+                        <small>
+                            Português (Brasil)
+                        </small>
+                    </div>
+
+                    <b>
+                        ›
+                    </b>
+
+                </a>
+
+
+                <a href="#configuracoes">
+
+                    <div>
+                        <strong>
+                            Privacidade
+                        </strong>
+
+                        <small>
+                            Controle dos seus dados
+                        </small>
+                    </div>
+
+                    <b>
+                        ›
+                    </b>
+
+                </a>
+
+            </div>
+
+        </main>
+
+    </section>
+
+
+    <!-- =====================================================
+         SUPORTE
+    ====================================================== -->
+
+    <section id="suporte" class="screen internal-screen">
+
+        <header class="internal-header">
+
+            <a href="#home" class="back-arrow">
+                ‹
+            </a>
+
+            <h1>
+                Suporte
+            </h1>
+
+            <a href="#home" class="header-home">
+                K
+            </a>
+
+        </header>
+
+
+        <main class="internal-content support">
+
+            <p class="section-label">
+                KORV CONCIERGE
+            </p>
+
+            <h2 class="internal-title">
+                Como podemos ajudar?
+            </h2>
+
+
+            <a href="#suporte" class="support-card">
+
+                <span>◉</span>
+
+                <div>
+
+                    <h3>
+                        Atendimento
+                    </h3>
+
+                    <p>
+                        Fale com nosso concierge.
+                    </p>
+
+                </div>
+
+                <b>›</b>
+
+            </a>
+
+
+            <a href="#suporte" class="support-card">
+
+                <span>?</span>
+
+                <div>
+
+                    <h3>
+                        Perguntas frequentes
+                    </h3>
+
+                    <p>
+                        Encontre respostas rápidas.
+                    </p>
+
+                </div>
+
+                <b>›</b>
+
+            </a>
+
+
+            <a href="#suporte" class="support-card">
+
+                <span>✈</span>
+
+                <div>
+
+                    <h3>
+                        Problemas com uma viagem
+                    </h3>
+
+                    <p>
+                        Precisa de ajuda com seu voo?
+                    </p>
+
+                </div>
+
+                <b>›</b>
+
+            </a>
+
+        </main>
+
+    </section>
+
+
+</body>
+
+</html>
