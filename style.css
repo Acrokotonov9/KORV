@@ -1,2622 +1,1029 @@
-/* =========================================================
-   RESET
-========================================================= */
+*{margin:0;padding:0;box-sizing:border-box}
 
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+:root{
+    --black:#050505;
+    --purple:#765cff;
+    --purple-dark:#5d4bed;
+    --gold:#d4af37;
+    --gray:#777;
+    --border:#29202f;
 }
 
+html{scroll-behavior:smooth}
 
-html {
-    scroll-behavior: smooth;
+body{
+    min-height:100vh;
+    background:#160020;
+    color:white;
+    font-family:Arial,Helvetica,sans-serif
 }
 
+a{color:inherit;text-decoration:none}
+input,select{font-family:inherit}
 
-body {
-    min-height: 100vh;
-
-    background: #160020;
-
-    color: #ffffff;
-
-    font-family:
-        Arial,
-        Helvetica,
-        sans-serif;
+.screen{
+    width:100%;
+    max-width:430px;
+    min-height:100vh;
+    margin:auto;
+    background:var(--black)
 }
 
+.app-screen,.internal-screen{display:none}
+.screen:target{display:block}
 
-a {
-    color: inherit;
-
-    text-decoration: none;
-}
-
-
-button,
-input,
-select {
-    font-family: inherit;
-}
-
-
-/* =========================================================
-   CORES KORV
-========================================================= */
-
-:root {
-
-    --black: #050505;
-
-    --black-light: #0c0c0c;
-
-    --purple: #765cff;
-
-    --purple-dark: #5d4bed;
-
-    --purple-light: #9b88ff;
-
-    --gold: #d4af37;
-
-    --white: #ffffff;
-
-    --gray: #888888;
-
-    --gray-dark: #444444;
-
-    --border: #29202f;
-
-}
-
-
-/* =========================================================
-   TELAS
-========================================================= */
-
-.screen {
-
-    width: 100%;
-
-    max-width: 430px;
-
-    min-height: 100vh;
-
-    margin: 0 auto;
-
-    background: var(--black);
-
-}
-
-
-/*
-    LOGIN aparece inicialmente.
-    As outras telas ficam escondidas.
-*/
-
-.app-screen,
-.internal-screen {
-
-    display: none;
-
-}
-
-
-/*
-    Quando uma seção vira :target,
-    ela passa a ser exibida.
-*/
-
-.screen:target {
-
-    display: block;
-
-}
-
-
-/*
-    Se clicarmos em qualquer tela da aplicação,
-    o login desaparece.
-*/
-
+body:not(:has(.screen:target)) .login-screen{display:block}
 body:has(.app-screen:target) .login-screen,
-body:has(.internal-screen:target) .login-screen {
+body:has(.internal-screen:target) .login-screen{display:none}
 
-    display: none;
 
+/* LOGIN */
+
+.login-container{
+    max-width:430px;
+    min-height:100vh;
+    margin:auto;
+    padding:20px 40px
+}
+
+.back-button{
+    display:block;
+    width:max-content;
+    color:#777;
+    font-size:43px
+}
+
+.login-logo{
+    text-align:center;
+    margin:10px 0 120px
+}
+
+.login-logo img{width:68px;margin-bottom:8px}
+
+.login-logo h1,
+.menu-logo h2,
+.brand strong,
+.internal-title,
+.aircraft-info h3,
+.destination-large h3,
+.profile h2,
+.arrival-content h1,
+.arrival-time strong{
+    font-family:Georgia,"Times New Roman",serif;
+    font-weight:normal
+}
+
+.login-logo h1{
+    color:var(--gold);
+    font-size:28px;
+    letter-spacing:1px
+}
+
+.login-logo h1 span,
+.menu-logo h2 span{
+    color:var(--purple);
+    font-family:Arial,sans-serif;
+    font-size:12px;
+    font-weight:normal
+}
+
+.login-form{
+    display:flex;
+    flex-direction:column
+}
+
+.login-form label{
+    margin-bottom:7px;
+    font-size:12px
+}
+
+.login-form input{
+    width:100%;
+    height:43px;
+    margin-bottom:22px;
+    padding:10px 12px;
+    border:1px solid #333;
+    border-radius:2px;
+    outline:0;
+    background:#ddd;
+    color:#111
+}
+
+.login-form input:focus,
+.field input:focus,
+.field select:focus{border-color:var(--purple)}
+
+.primary-button{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    background:var(--purple-dark);
+    color:var(--gold);
+    font-weight:bold;
+    transition:.2s
+}
+
+.primary-button:hover{
+    background:var(--purple);
+    color:white
+}
+
+.login-button{
+    width:100%;
+    height:46px;
+    margin-top:35px;
+    font-size:13px
+}
+
+.register-link,.forgot-link{
+    display:block;
+    text-align:center
+}
+
+.register-link{
+    margin-top:25px;
+    font-size:13px;
+    font-weight:bold
+}
+
+.forgot-link{
+    margin-top:35px;
+    color:#666;
+    font-size:12px
 }
 
 
-/*
-    Quando estamos no login,
-    ele aparece mesmo sem #login.
-*/
+/* MENU */
 
-body:not(:has(.screen:target)) .login-screen {
+#menu-toggle{display:none}
 
-    display: block;
+.menu-button{
+    position:absolute;
+    top:18px;
+    right:20px;
+    z-index:50;
+    width:45px;
+    height:45px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    border:1px solid #3c2c4d;
+    border-radius:50%;
+    background:#000a;
+    color:var(--purple);
+    font-size:22px;
+    cursor:pointer
+}
 
+.menu-overlay{
+    position:fixed;
+    inset:0;
+    z-index:90;
+    background:#000a;
+    opacity:0;
+    visibility:hidden;
+    pointer-events:none;
+    transition:.3s
+}
+
+.side-menu{
+    position:fixed;
+    top:0;
+    left:0;
+    z-index:100;
+    width:310px;
+    max-width:82vw;
+    height:100vh;
+    padding:25px;
+    background:#070707;
+    border-right:1px solid #3a2850;
+    transform:translateX(-100%);
+    transition:.3s;
+    overflow-y:auto
+}
+
+#menu-toggle:checked~.side-menu{transform:translateX(0)}
+#menu-toggle:checked~.menu-overlay{
+    opacity:1;
+    visibility:visible;
+    pointer-events:auto
+}
+
+.close-menu{
+    display:block;
+    width:max-content;
+    margin-bottom:15px;
+    color:var(--purple);
+    font-size:40px;
+    cursor:pointer
+}
+
+.menu-logo{
+    margin-bottom:30px;
+    text-align:center
+}
+
+.menu-logo img{width:60px;margin-bottom:8px}
+
+.menu-logo h2{
+    color:var(--gold);
+    font-size:25px
+}
+
+.menu-navigation{
+    display:flex;
+    flex-direction:column;
+    gap:3px
+}
+
+.menu-navigation label{display:block}
+
+.menu-navigation a{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    min-height:52px;
+    padding:12px 10px;
+    border-bottom:1px solid #1d1d1d;
+    font-size:14px;
+    transition:.2s
+}
+
+.menu-navigation a span{
+    width:20px;
+    color:var(--purple);
+    text-align:center
+}
+
+.menu-navigation a:hover{
+    padding-left:17px;
+    color:var(--gold)
+}
+
+.menu-navigation .menu-logout{
+    margin-top:20px;
+    color:#777
 }
 
 
-/* =========================================================
-   LOGIN
-========================================================= */
+/* HOME */
 
-.login-screen {
-
-    min-height: 100vh;
-
-    background: var(--black);
-
+.app-screen{
+    position:relative;
+    min-height:100vh;
+    overflow:hidden
 }
 
-
-.login-container {
-
-    width: 100%;
-
-    max-width: 430px;
-
-    min-height: 100vh;
-
-    margin: auto;
-
-    padding: 20px 40px;
-
-    background: var(--black);
-
+.page-content{
+    min-height:100vh;
+    padding-bottom:90px
 }
 
-
-.back-button {
-
-    display: block;
-
-    width: fit-content;
-
-    color: #777777;
-
-    font-family: Arial, sans-serif;
-
-    font-size: 43px;
-
-    line-height: 1;
-
-    transition: 0.2s;
-
+.app-header{
+    position:relative;
+    z-index:5;
+    height:80px;
+    padding:25px
 }
 
-
-.back-button:hover {
-
-    color: var(--purple);
-
+.brand{
+    display:flex;
+    align-items:baseline;
+    gap:5px
 }
 
-
-/* LOGO */
-
-.login-logo {
-
-    text-align: center;
-
-    margin-top: 10px;
-
-    margin-bottom: 120px;
-
+.brand strong{
+    color:var(--gold);
+    font-size:25px;
+    letter-spacing:1px
 }
 
+.brand span{color:var(--purple);font-size:12px}
 
-.login-logo img {
-
-    width: 68px;
-
-    height: auto;
-
-    margin-bottom: 8px;
-
+.hero{
+    position:relative;
+    min-height:420px;
+    margin-top:-80px;
+    padding:155px 25px 50px;
+    background:
+        linear-gradient(to bottom,#0002,#05050540,#050505),
+        url("imagens/aviao.jpg") center/cover
 }
 
+.hero-greeting{color:#ddd;font-size:17px}
 
-.login-logo h1 {
-
-    color: var(--gold);
-
-    font-family: Georgia, "Times New Roman", serif;
-
-    font-size: 28px;
-
-    letter-spacing: 1px;
-
+.hero h1{
+    margin:5px 0 20px;
+    color:var(--gold);
+    font-family:Georgia,"Times New Roman",serif;
+    font-size:58px;
+    font-weight:normal
 }
 
+.hero h1 span{color:var(--purple)}
+.hero-description{font-size:15px;line-height:1.5}
+.hero-description strong{color:var(--purple)}
 
-.login-logo h1 span {
 
-    color: var(--purple);
+/* CARDS */
 
-    font-family: Arial, sans-serif;
+.flight-card{
+    position:relative;
+    z-index:4;
+    margin:-65px 24px 25px;
+    padding:23px;
+    border:1px solid #3b2854;
+    border-radius:21px;
+    background:#080808f2;
+    backdrop-filter:blur(10px)
+}
 
-    font-size: 13px;
+.section-label{
+    color:var(--purple);
+    font-size:10px;
+    letter-spacing:1.2px
+}
 
-    font-weight: normal;
+.route{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:8px;
+    margin-top:25px
+}
 
-    letter-spacing: 0;
+.airport{display:flex;flex-direction:column}
+.airport strong{font-size:38px;font-weight:normal}
+.airport small{margin-top:4px;color:#777;font-size:10px}
 
+.route-line{
+    flex:1;
+    color:var(--purple);
+    font-size:10px;
+    text-align:center;
+    white-space:nowrap;
+    overflow:hidden
+}
+
+.flight-info,..trip-data{
+    display:flex;
+    justify-content:space-between;
+    gap:10px;
+    padding:14px 0;
+    border-top:1px solid #242424;
+    border-bottom:1px solid #242424;
+    color:#888;
+    font-size:10px
+}
+
+.flight-info{margin-top:23px}
+
+.details-link{
+    display:block;
+    margin-top:17px;
+    color:var(--purple);
+    font-size:12px;
+    text-align:right
+}
+
+.plan-button{
+    height:57px;
+    margin:0 24px 35px;
+    padding:0 20px;
+    border-radius:16px;
+    justify-content:space-between;
+    font-size:12px
+}
+
+.plan-button span{color:var(--gold);font-size:17px}
+
+
+/* DESTINOS */
+
+.featured-destinations{padding:0 24px}
+
+.section-heading{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:15px
+}
+
+.section-heading h2{font-size:11px;font-weight:normal}
+.section-heading a{color:var(--purple);font-size:10px}
+
+.destination-grid{
+    display:flex;
+    gap:12px;
+    overflow-x:auto;
+    scrollbar-width:none
+}
+
+.destination-grid::-webkit-scrollbar{display:none}
+
+.destination-card{
+    position:relative;
+    display:flex;
+    align-items:flex-end;
+    min-width:145px;
+    height:175px;
+    overflow:hidden;
+    border-radius:18px;
+    background:center/cover
+}
+
+.destination-card::after,
+.destination-large::after{
+    content:"";
+    position:absolute;
+    inset:0;
+    background:linear-gradient(transparent,#000f)
+}
+
+.destination-card div,
+.destination-large div{
+    position:relative;
+    z-index:2;
+    padding:15px
+}
+
+.destination-card h3{font-size:18px;font-weight:normal}
+.destination-card p{margin-top:4px;color:var(--purple);font-size:10px}
+
+.miami{background-image:url("imagens/miami.jpg")}
+.paris{background-image:url("imagens/paris.jpg")}
+
+
+/* MENU INFERIOR */
+
+.bottom-navigation{
+    position:fixed;
+    bottom:0;
+    left:50%;
+    z-index:30;
+    width:100%;
+    max-width:430px;
+    height:72px;
+    transform:translateX(-50%);
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    border-top:1px solid #242027;
+    background:#050505f7;
+    backdrop-filter:blur(10px)
+}
+
+.bottom-navigation a{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    gap:5px;
+    color:#666;
+    font-size:10px
+}
+
+.bottom-navigation a span{font-size:19px}
+.bottom-navigation .bottom-active{color:var(--gold)}
+
+
+/* TELAS INTERNAS */
+
+.internal-screen{min-height:100vh}
+
+.internal-header{
+    display:flex;
+    align-items:center;
+    height:80px;
+    padding:0 24px;
+    border-bottom:1px solid #1c1c1c
+}
+
+.back-arrow{
+    color:var(--purple);
+    font-size:38px
+}
+
+.internal-header h1{
+    margin-left:18px;
+    font-size:19px;
+    font-weight:normal
+}
+
+.header-home{
+    margin-left:auto;
+    color:var(--gold);
+    font-family:Georgia,serif;
+    font-size:22px
+}
+
+.internal-content{padding:35px 24px 50px}
+
+.internal-title{
+    margin:9px 0 32px;
+    color:var(--gold);
+    font-size:30px
 }
 
 
 /* FORMULÁRIO */
 
-.login-form {
-
-    display: flex;
-
-    flex-direction: column;
-
+.field{
+    display:flex;
+    flex-direction:column;
+    gap:8px;
+    margin-bottom:18px
 }
-
-
-.login-form label {
-
-    margin-bottom: 7px;
-
-    color: #eeeeee;
-
-    font-size: 12px;
 
-    letter-spacing: 0.5px;
-
+.field label{
+    color:#999;
+    font-size:10px;
+    letter-spacing:.7px
 }
-
-
-.login-form input {
-
-    width: 100%;
-
-    height: 43px;
-
-    margin-bottom: 22px;
-
-    padding: 10px 12px;
-
-    border: 1px solid #333333;
 
-    border-radius: 2px;
-
-    outline: none;
-
-    background: #dddddd;
-
-    color: #111111;
-
-    font-size: 15px;
-
+.field input,.field select{
+    width:100%;
+    height:48px;
+    padding:0 13px;
+    border:1px solid #30233e;
+    border-radius:9px;
+    outline:0;
+    background:#101010;
+    color:white
 }
-
-
-.login-form input:focus {
-
-    border-color: var(--purple);
 
+.swap-button{
+    width:34px;
+    height:34px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    margin:-2px auto 15px;
+    border-radius:50%;
+    background:var(--purple-dark)
 }
-
-
-/* BOTÃO PRINCIPAL */
-
-.primary-button {
-
-    display: flex;
-
-    align-items: center;
-
-    justify-content: center;
-
-    background: var(--purple-dark);
-
-    color: var(--gold);
 
-    font-weight: bold;
-
-    letter-spacing: 0.5px;
-
-    transition: 0.2s;
-
+.two-fields{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:12px
 }
-
 
-.primary-button:hover {
-
-    background: var(--purple);
-
-    color: white;
-
+.continue-button{
+    width:100%;
+    height:53px;
+    margin-top:28px;
+    border-radius:11px;
+    font-size:12px
 }
-
 
-.login-button {
 
-    width: 100%;
+/* VIAGENS */
 
-    height: 46px;
-
-    margin-top: 35px;
-
-    font-size: 13px;
-
+.trip-card{
+    margin-top:16px;
+    padding:22px;
+    border:1px solid #3a2750;
+    border-radius:18px;
+    background:#0c0c0c
 }
-
-
-/* LINKS */
-
-.register-link {
-
-    display: block;
-
-    margin-top: 25px;
 
-    text-align: center;
-
-    color: white;
-
-    font-size: 13px;
-
-    font-weight: bold;
-
+.trip-top{
+    display:flex;
+    justify-content:space-between;
+    margin-bottom:25px
 }
-
-
-.forgot-link {
-
-    display: block;
-
-    margin-top: 35px;
 
-    text-align: center;
+.trip-top span{color:var(--purple);font-size:9px;letter-spacing:1px}
+.trip-top small{color:#777;font-size:10px}
 
-    color: #666666;
-
-    font-size: 12px;
-
+.trip-data{
+    margin-top:20px;
+    padding-top:14px
 }
-
-
-.register-link:hover,
-.forgot-link:hover {
 
-    color: var(--purple);
-
+.trip-card>a{
+    display:block;
+    margin-top:18px;
+    color:var(--purple);
+    font-size:11px;
+    text-align:right
 }
-
-
-/* =========================================================
-   HOME / APP
-========================================================= */
-
-.app-screen {
 
-    position: relative;
-
-    min-height: 100vh;
-
-    overflow: hidden;
-
+.history-label{
+    margin:35px 0 12px
 }
-
 
-.page-content {
-
-    min-height: 100vh;
-
-    padding-bottom: 90px;
-
+.past-trip{
+    display:flex;
+    justify-content:space-between;
+    padding:17px 0;
+    border-bottom:1px solid #202020
 }
-
 
-/* =========================================================
-   MENU HAMBÚRGUER
-========================================================= */
-
-#menu-toggle {
-    display: none;
+.past-trip div{
+    display:flex;
+    flex-direction:column;
+    gap:5px
 }
-
-
-/* BOTÃO ☰ */
-
-.menu-button {
-
-    position: absolute;
-
-    top: 18px;
-    right: 20px;
-
-    z-index: 50;
-
-    width: 45px;
-    height: 45px;
 
-    display: flex;
-    align-items: center;
-    justify-content: center;
+.past-trip strong{font-size:13px}
+.past-trip small,.past-trip>span{color:#666;font-size:9px}
 
-    border: 1px solid #3c2c4d;
-    border-radius: 50%;
 
-    background: rgba(0, 0, 0, 0.65);
+/* AERONAVES */
 
-    color: var(--purple);
-
-    font-size: 22px;
-
-    cursor: pointer;
+.aircraft-card{
+    margin-bottom:20px;
+    overflow:hidden;
+    border:1px solid #242024;
+    border-radius:18px;
+    background:#0c0c0c
 }
-
-
-/* =========================================================
-   FUNDO ESCURO
-========================================================= */
-
-.menu-overlay {
-
-    position: fixed;
-
-    inset: 0;
-
-    z-index: 90;
 
-    background: rgba(0, 0, 0, 0.65);
-
-    opacity: 0;
-
-    visibility: hidden;
-
-    pointer-events: none;
-
-    transition:
-        opacity 0.3s ease,
-        visibility 0.3s ease;
-
+.aircraft-card img{
+    display:block;
+    width:100%;
+    height:180px;
+    object-fit:cover
 }
-
-
-/* =========================================================
-   MENU LATERAL
-========================================================= */
-
-.side-menu {
 
-    position: fixed;
+.aircraft-info{padding:20px}
+.aircraft-category{color:var(--purple);font-size:9px;letter-spacing:1px}
 
-    top: 0;
-    left: 0;
-
-    width: 310px;
-    max-width: 82vw;
-
-    height: 100vh;
-
-    padding: 25px;
-
-    background: #070707;
-
-    border-right: 1px solid #3a2850;
-
-    z-index: 100;
-
-    transform: translateX(-100%);
-
-    transition: transform 0.3s ease;
-
-    overflow-y: auto;
-
+.aircraft-info h3{
+    margin:8px 0;
+    font-size:23px
 }
-
-
-/* ABRIR */
 
-#menu-toggle:checked ~ .side-menu {
+.aircraft-info>span{color:#777;font-size:11px}
 
-    transform: translateX(0);
-
+.aircraft-info a{
+    display:block;
+    margin-top:20px;
+    color:var(--purple);
+    font-size:11px
 }
-
-
-/* ESCURECER FUNDO */
-
-#menu-toggle:checked ~ .menu-overlay {
 
-    opacity: 1;
 
-    visibility: visible;
+/* DESTINOS */
 
-    pointer-events: auto;
-
+.destination-large{
+    position:relative;
+    display:flex;
+    align-items:flex-end;
+    height:190px;
+    margin-bottom:16px;
+    overflow:hidden;
+    border-radius:18px;
+    background:center/cover
 }
-
-
-/* =========================================================
-   BOTÃO FECHAR
-========================================================= */
-
-.close-menu {
 
-    display: block;
+.destination-large div{padding:20px}
+.destination-large p{color:var(--purple);font-size:9px;letter-spacing:1px}
+.destination-large h3{margin-top:5px;font-size:30px}
 
-    width: fit-content;
 
-    margin-bottom: 15px;
+/* SERVIÇOS */
 
-    color: var(--purple);
+.service-list{display:flex;flex-direction:column}
 
-    font-size: 40px;
-
-    line-height: 1;
-
-    cursor: pointer;
-
+.service-list article{
+    display:flex;
+    gap:17px;
+    padding:21px 0;
+    border-bottom:1px solid #202020
 }
-
 
-/* =========================================================
-   LOGO
-========================================================= */
-
-.menu-logo {
-
-    margin-bottom: 30px;
-
-    text-align: center;
-
+.service-list article>span{
+    flex-shrink:0;
+    width:42px;
+    height:42px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    border:1px solid #38274a;
+    border-radius:50%;
+    color:var(--purple)
 }
-
-
-.menu-logo img {
-
-    width: 60px;
-
-    margin-bottom: 8px;
 
+.service-list h3{
+    margin-bottom:7px;
+    font-size:14px;
+    font-weight:normal
 }
 
-
-.menu-logo h2 {
-
-    color: var(--gold);
-
-    font-family:
-        Georgia,
-        "Times New Roman",
-        serif;
-
-    font-size: 25px;
-
+.service-list p{
+    color:#777;
+    font-size:11px;
+    line-height:1.5
 }
-
-
-.menu-logo h2 span {
-
-    color: var(--purple);
 
-    font-family: Arial, sans-serif;
 
-    font-size: 12px;
+/* PERFIL */
 
-    font-weight: normal;
-
+.profile{
+    padding:10px 0 35px;
+    text-align:center
 }
-
-
-/* =========================================================
-   NAVEGAÇÃO
-========================================================= */
-
-.menu-navigation {
 
-    display: flex;
-
-    flex-direction: column;
-
-    gap: 3px;
-
+.profile-avatar{
+    width:80px;
+    height:80px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    margin:0 auto 15px;
+    border:1px solid #4a3562;
+    border-radius:50%;
+    background:#171022;
+    color:var(--gold);
+    font-family:Georgia,serif;
+    font-size:30px
 }
-
 
-.menu-navigation label {
+.profile h2{font-size:23px}
+.profile p{margin-top:5px;color:var(--purple);font-size:10px}
 
-    display: block;
+.profile-options,.settings-list{display:flex;flex-direction:column}
 
+.profile-options a{
+    display:grid;
+    grid-template-columns:30px 1fr 20px;
+    align-items:center;
+    gap:10px;
+    min-height:62px;
+    border-bottom:1px solid #202020
 }
 
+.profile-options a>span{color:var(--purple)}
+.profile-options a b{color:#666;text-align:right}
 
-.menu-navigation a {
 
-    display: flex;
+/* CONFIGURAÇÕES */
 
-    align-items: center;
-
-    gap: 12px;
-
-    min-height: 52px;
-
-    padding: 12px 10px;
-
-    border-bottom: 1px solid #1d1d1d;
-
-    color: #eeeeee;
-
-    font-size: 14px;
-
-    transition: 0.2s;
-
+.settings-list a{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:20px 0;
+    border-bottom:1px solid #202020
 }
 
-
-.menu-navigation a span {
-
-    width: 20px;
-
-    color: var(--purple);
-
-    text-align: center;
-
+.settings-list a div{
+    display:flex;
+    flex-direction:column;
+    gap:5px
 }
-
 
-.menu-navigation a:hover {
+.settings-list strong{font-size:13px;font-weight:normal}
+.settings-list small{color:#666;font-size:10px}
+.settings-list b{color:#666;font-size:20px}
 
-    padding-left: 17px;
 
-    color: var(--gold);
+/* SUPORTE */
 
+.support-card{
+    display:grid;
+    grid-template-columns:45px 1fr 20px;
+    align-items:center;
+    gap:15px;
+    min-height:80px;
+    margin-bottom:12px;
+    padding:15px;
+    border:1px solid #242024;
+    border-radius:14px;
+    background:#0c0c0c
 }
-
-
-/* SAIR */
 
-.menu-navigation .menu-logout {
-
-    margin-top: 20px;
-
-    color: #777777;
-
+.support-card>span{
+    width:40px;
+    height:40px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    border-radius:50%;
+    background:#171022;
+    color:var(--purple)
 }
-
-/* =========================================================
-   HEADER
-========================================================= */
-
-.app-header {
-
-    position: relative;
-
-    z-index: 5;
-
-    height: 80px;
 
-    padding: 25px;
-
+.support-card h3{
+    margin-bottom:5px;
+    font-size:13px;
+    font-weight:normal
 }
-
 
-.brand {
+.support-card p{color:#666;font-size:10px}
+.support-card b{color:#666;font-size:20px}
 
-    display: flex;
 
-    align-items: baseline;
+/* PAGAMENTO */
 
-    gap: 5px;
-
+.payment-route{
+    display:grid;
+    grid-template-columns:1fr 40px 1fr;
+    align-items:center;
+    margin-top:25px;
+    padding:25px 0;
+    border-bottom:1px solid #242024
 }
-
-
-.brand strong {
-
-    color: var(--gold);
-
-    font-family: Georgia, "Times New Roman", serif;
-
-    font-size: 25px;
 
-    letter-spacing: 1px;
+.payment-route div{display:flex;flex-direction:column}
+.payment-route div:last-child{text-align:right}
+.payment-route strong{font-size:34px;font-weight:normal}
+.payment-route small{margin-top:5px;color:#777;font-size:10px}
+.payment-route>span{color:var(--purple);text-align:center}
 
+.payment-info{
+    display:flex;
+    flex-direction:column;
+    gap:8px;
+    padding:18px 0;
+    color:#777;
+    font-size:10px
 }
 
+.payment-label{margin:25px 0 12px}
 
-.brand span {
-
-    color: var(--purple);
-
-    font-size: 12px;
-
+.payment-method{
+    display:flex;
+    align-items:center;
+    gap:14px;
+    padding:17px;
+    border:1px solid #30233e;
+    border-radius:12px;
+    background:#0d0d0d
 }
-
-
-/* =========================================================
-   HERO
-========================================================= */
-
-.hero {
-
-    position: relative;
-
-    min-height: 420px;
 
-    margin-top: -80px;
-
-    padding: 155px 25px 50px;
-
-    background-image:
-
-        linear-gradient(
-            to bottom,
-            rgba(0, 0, 0, 0.1) 20%,
-            rgba(5, 5, 5, 0.25) 50%,
-            #050505 100%
-        ),
-
-        url("imagens/aviao.jpg");
-
-    background-size: cover;
-
-    background-position: center;
-
+.card-icon{
+    width:40px;
+    height:27px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    border-radius:5px;
+    background:#222;
+    color:var(--gold)
 }
-
 
-.hero-content {
-
-    position: relative;
-
-    z-index: 2;
-
+.payment-method div:nth-child(2){
+    display:flex;
+    flex-direction:column;
+    gap:5px;
+    flex:1
 }
-
 
-.hero-greeting {
+.payment-method strong{font-size:12px;font-weight:normal}
+.payment-method small{color:#666;font-size:9px}
+.payment-method a{color:var(--purple);font-size:10px}
 
-    color: #dddddd;
-
-    font-size: 17px;
-
+.total-payment{
+    display:flex;
+    align-items:flex-end;
+    justify-content:space-between;
+    margin-top:40px;
+    padding-bottom:20px;
+    border-bottom:1px solid #242024
 }
-
-
-.hero h1 {
 
-    margin: 5px 0 20px;
-
-    color: var(--gold);
-
-    font-family: Georgia, "Times New Roman", serif;
-
-    font-size: 58px;
-
-    font-weight: normal;
-
+.total-payment span{color:#777;font-size:10px;letter-spacing:1px}
+.total-payment strong{
+    color:var(--gold);
+    font-family:Georgia,serif;
+    font-size:25px;
+    font-weight:normal
 }
-
 
-.hero h1 span {
 
-    color: var(--purple);
+/* AVIÃO CHEGANDO */
 
+.arrival-screen{
+    position:relative;
+    min-height:100vh;
+    overflow:hidden;
+    background:#050505
 }
-
-
-.hero-description {
 
-    color: #eeeeee;
-
-    font-size: 15px;
-
-    line-height: 1.5;
-
+.arrival-background{
+    position:absolute;
+    inset:0;
+    background:
+        linear-gradient(#05050559,#050505a6 45%,#050505),
+        url("imagens/aviao.jpg") center/cover;
+    opacity:.8
 }
-
 
-.hero-description strong {
-
-    color: var(--purple);
-
+.arrival-content{
+    position:relative;
+    z-index:2;
+    min-height:100vh;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    padding:35px 25px 30px;
+    text-align:center
 }
-
-
-/* =========================================================
-   CARD DE VOO
-========================================================= */
-
-.flight-card {
-
-    position: relative;
-
-    z-index: 4;
-
-    margin: -65px 24px 25px;
-
-    padding: 23px;
-
-    border: 1px solid #3b2854;
-
-    border-radius: 21px;
-
-    background: rgba(8, 8, 8, 0.95);
 
-    backdrop-filter: blur(10px);
-
+.arrival-logo{
+    align-self:flex-start;
+    color:var(--gold);
+    font-family:Georgia,serif;
+    font-size:21px
 }
-
-
-.section-label {
-
-    color: var(--purple);
 
-    font-size: 10px;
-
-    letter-spacing: 1.2px;
-
+.arrival-icon{
+    width:60px;
+    height:60px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    margin-top:60px;
+    border:1px solid #4b3760;
+    border-radius:50%;
+    color:var(--gold)
 }
-
-
-.route {
 
-    display: flex;
+.arrival-content .section-label{margin-top:25px}
 
-    align-items: center;
-
-    justify-content: space-between;
-
-    gap: 8px;
-
-    margin-top: 25px;
-
+.arrival-content h1{
+    margin-top:10px;
+    font-size:31px;
+    line-height:1.2
 }
 
+.arrival-aircraft{margin-top:12px;color:var(--purple);font-size:11px}
 
-.airport {
-
-    display: flex;
-
-    flex-direction: column;
-
+.arrival-route{
+    width:100%;
+    display:grid;
+    grid-template-columns:1fr 1.5fr 1fr;
+    align-items:center;
+    margin-top:45px;
+    padding:20px 0;
+    border-block:1px solid #2c2530
 }
-
 
-.airport strong {
-
-    color: white;
-
-    font-size: 38px;
-
-    font-weight: normal;
-
+.arrival-route span{
+    display:flex;
+    flex-direction:column;
+    gap:5px;
+    font-size:24px
 }
-
-
-.airport small {
-
-    margin-top: 4px;
-
-    color: #777777;
 
-    font-size: 10px;
+.arrival-route span:last-child{text-align:right}
+.arrival-route small{color:#777;font-size:8px}
+.arrival-route div{color:var(--purple);font-size:9px}
 
+.arrival-time{
+    display:flex;
+    flex-direction:column;
+    margin-top:35px
 }
 
-
-.route-line {
-
-    flex: 1;
-
-    color: var(--purple);
-
-    font-size: 10px;
-
-    text-align: center;
+.arrival-time small{color:#777;font-size:9px;letter-spacing:1px}
+.arrival-time strong{
+    margin-top:5px;
+    color:var(--gold);
+    font-size:42px
+}
 
-    white-space: nowrap;
+.arrival-message{
+    max-width:230px;
+    margin-top:10px;
+    color:#888;
+    font-size:11px;
+    line-height:1.5
+}
 
-    overflow: hidden;
+.arrival-data{
+    width:100%;
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    margin-top:35px;
+    border-block:1px solid #292329
+}
 
+.arrival-data div{
+    display:flex;
+    flex-direction:column;
+    gap:7px;
+    padding:17px 10px
 }
 
+.arrival-data div+div{border-left:1px solid #292329}
+.arrival-data small{color:#666;font-size:8px;letter-spacing:1px}
+.arrival-data strong{font-size:11px;font-weight:normal}
 
-.flight-info {
+.arrival-button{
+    width:100%;
+    height:52px;
+    margin-top:auto;
+    border-radius:11px;
+    font-size:11px
+}
 
-    display: flex;
 
-    justify-content: space-between;
-
-    gap: 10px;
-
-    margin-top: 23px;
-
-    padding: 14px 0;
-
-    border-top: 1px solid #242424;
-
-    border-bottom: 1px solid #242424;
-
-    color: #888888;
-
-    font-size: 10px;
-
-}
-
-
-.details-link {
-
-    display: block;
-
-    margin-top: 17px;
-
-    color: var(--purple);
-
-    font-size: 12px;
-
-    text-align: right;
-
-}
-
-
-/* =========================================================
-   BOTÃO PLANEJAR
-========================================================= */
-
-.plan-button {
-
-    height: 57px;
-
-    margin: 0 24px 35px;
-
-    padding: 0 20px;
-
-    border-radius: 16px;
-
-    justify-content: space-between;
-
-    font-size: 12px;
-
-}
-
-
-.plan-button span {
-
-    color: var(--gold);
-
-    font-size: 17px;
-
-}
-
-
-/* =========================================================
-   DESTINOS DESTAQUE
-========================================================= */
-
-.featured-destinations {
-
-    padding: 0 24px;
-
-}
-
-
-.section-heading {
-
-    display: flex;
-
-    align-items: center;
-
-    justify-content: space-between;
-
-    margin-bottom: 15px;
-
-}
-
-
-.section-heading h2 {
-
-    font-size: 11px;
-
-    font-weight: normal;
-
-}
-
-
-.section-heading a {
-
-    color: var(--purple);
-
-    font-size: 10px;
-
-}
-
-
-.destination-grid {
-
-    display: flex;
-
-    gap: 12px;
-
-    overflow-x: auto;
-
-    scrollbar-width: none;
-
-}
-
-
-.destination-grid::-webkit-scrollbar {
-
-    display: none;
-
-}
-
-
-.destination-card {
-
-    position: relative;
-
-    display: flex;
-
-    align-items: flex-end;
-
-    min-width: 145px;
-
-    height: 175px;
-
-    overflow: hidden;
-
-    border-radius: 18px;
-
-    background-position: center;
-
-    background-size: cover;
-
-}
-
-
-.destination-card::after {
-
-    content: "";
-
-    position: absolute;
-
-    inset: 0;
-
-    background: linear-gradient(
-        transparent,
-        rgba(0, 0, 0, 0.95)
-    );
-
-}
-
-
-.destination-card div {
-
-    position: relative;
-
-    z-index: 2;
-
-    padding: 15px;
-
-}
-
-
-.destination-card h3 {
-
-    font-size: 18px;
-
-    font-weight: normal;
-
-}
-
-
-.destination-card p {
-
-    margin-top: 4px;
-
-    color: var(--purple);
-
-    font-size: 10px;
-
-}
-
-
-.miami {
-
-    background-image: url("imagens/miami.jpg");
-
-}
-
-
-.paris {
-
-    background-image: url("imagens/paris.jpg");
-
-}
-
-
-/* =========================================================
-   NAVEGAÇÃO INFERIOR
-========================================================= */
-
-.bottom-navigation {
-
-    position: fixed;
-
-    bottom: 0;
-
-    left: 50%;
-
-    z-index: 30;
-
-    width: 100%;
-
-    max-width: 430px;
-
-    height: 72px;
-
-    transform: translateX(-50%);
-
-    display: grid;
-
-    grid-template-columns: repeat(4, 1fr);
-
-    border-top: 1px solid #242027;
-
-    background: rgba(5, 5, 5, 0.97);
-
-    backdrop-filter: blur(10px);
-
-}
-
-
-.bottom-navigation a {
-
-    display: flex;
-
-    flex-direction: column;
-
-    align-items: center;
-
-    justify-content: center;
-
-    gap: 5px;
-
-    color: #666666;
-
-    font-size: 10px;
-
-}
-
-
-.bottom-navigation a span {
-
-    font-size: 19px;
-
-}
-
-
-.bottom-navigation .bottom-active {
-
-    color: var(--gold);
-
-}
-
-
-/* =========================================================
-   TELAS INTERNAS
-========================================================= */
-
-.internal-screen {
-
-    min-height: 100vh;
-
-    background: var(--black);
-
-}
-
-
-.internal-header {
-
-    position: relative;
-
-    display: flex;
-
-    align-items: center;
-
-    height: 80px;
-
-    padding: 0 24px;
-
-    border-bottom: 1px solid #1c1c1c;
-
-}
-
-
-.back-arrow {
-
-    color: var(--purple);
-
-    font-size: 38px;
-
-    line-height: 1;
-
-}
-
-
-.internal-header h1 {
-
-    margin-left: 18px;
-
-    color: white;
-
-    font-size: 19px;
-
-    font-weight: normal;
-
-}
-
-
-.header-home {
-
-    position: absolute;
-
-    right: 24px;
-
-    color: var(--gold);
-
-    font-family: Georgia, "Times New Roman", serif;
-
-    font-size: 22px;
-
-}
-
-
-.internal-content {
-
-    padding: 35px 24px 50px;
-
-}
-
-
-.internal-title {
-
-    margin: 9px 0 32px;
-
-    color: var(--gold);
-
-    font-family: Georgia, "Times New Roman", serif;
-
-    font-size: 30px;
-
-    font-weight: normal;
-
-}
-
-
-/* =========================================================
-   PLANEJAMENTO
-========================================================= */
-
-.field {
-
-    display: flex;
-
-    flex-direction: column;
-
-    gap: 8px;
-
-    margin-bottom: 18px;
-
-}
-
-
-.field label {
-
-    color: #999999;
-
-    font-size: 10px;
-
-    letter-spacing: 0.7px;
-
-}
-
-
-.field input,
-.field select {
-
-    width: 100%;
-
-    height: 48px;
-
-    padding: 0 13px;
-
-    outline: none;
-
-    border: 1px solid #30233e;
-
-    border-radius: 9px;
-
-    background: #101010;
-
-    color: white;
-
-}
-
-
-.field input:focus,
-.field select:focus {
-
-    border-color: var(--purple);
-
-}
-
-
-.swap-button {
-
-    width: 34px;
-
-    height: 34px;
-
-    display: flex;
-
-    align-items: center;
-
-    justify-content: center;
-
-    margin: -2px auto 15px;
-
-    border-radius: 50%;
-
-    background: var(--purple-dark);
-
-    color: white;
-
-}
-
-
-.two-fields {
-
-    display: grid;
-
-    grid-template-columns: 1fr 1fr;
-
-    gap: 12px;
-
-}
-
-
-.continue-button {
-
-    width: 100%;
-
-    height: 53px;
-
-    margin-top: 28px;
-
-    border-radius: 11px;
-
-    font-size: 12px;
-
-}
-
-
-/* =========================================================
-   VIAGENS
-========================================================= */
-
-.trip-card {
-
-    margin-top: 16px;
-
-    padding: 22px;
-
-    border: 1px solid #3a2750;
-
-    border-radius: 18px;
-
-    background: #0c0c0c;
-
-}
-
-
-.trip-top {
-
-    display: flex;
-
-    align-items: center;
-
-    justify-content: space-between;
-
-    margin-bottom: 25px;
-
-}
-
-
-.trip-top span {
-
-    color: var(--purple);
-
-    font-size: 9px;
-
-    letter-spacing: 1px;
-
-}
-
-
-.trip-top small {
-
-    color: #777777;
-
-    font-size: 10px;
-
-}
-
-
-.trip-data {
-
-    display: flex;
-
-    justify-content: space-between;
-
-    margin-top: 20px;
-
-    padding-top: 14px;
-
-    border-top: 1px solid #252525;
-
-    color: #888888;
-
-    font-size: 10px;
-
-}
-
-
-.trip-card > a {
-
-    display: block;
-
-    margin-top: 18px;
-
-    color: var(--purple);
-
-    font-size: 11px;
-
-    text-align: right;
-
-}
-
-
-.history-label {
-
-    margin-top: 35px;
-
-    margin-bottom: 12px;
-
-}
-
-
-.past-trip {
-
-    display: flex;
-
-    align-items: center;
-
-    justify-content: space-between;
-
-    padding: 17px 0;
-
-    border-bottom: 1px solid #202020;
-
-}
-
-
-.past-trip div {
-
-    display: flex;
-
-    flex-direction: column;
-
-    gap: 5px;
-
-}
-
-
-.past-trip strong {
-
-    font-size: 13px;
-
-}
-
-
-.past-trip small {
-
-    color: #666666;
-
-    font-size: 9px;
-
-}
-
-
-.past-trip > span {
-
-    color: #666666;
-
-    font-size: 9px;
-
-}
-
-
-/* =========================================================
-   AERONAVES
-========================================================= */
-
-.aircraft-card {
-
-    margin-bottom: 20px;
-
-    overflow: hidden;
-
-    border: 1px solid #242024;
-
-    border-radius: 18px;
-
-    background: #0c0c0c;
-
-}
-
-
-.aircraft-card img {
-
-    display: block;
-
-    width: 100%;
-
-    height: 180px;
-
-    object-fit: cover;
-
-}
-
-
-.aircraft-info {
-
-    padding: 20px;
-
-}
-
-
-.aircraft-category {
-
-    color: var(--purple);
-
-    font-size: 9px;
-
-    letter-spacing: 1px;
-
-}
-
-
-.aircraft-info h3 {
-
-    margin: 8px 0;
-
-    color: white;
-
-    font-family: Georgia, "Times New Roman", serif;
-
-    font-size: 23px;
-
-    font-weight: normal;
-
-}
-
-
-.aircraft-info > span {
-
-    color: #777777;
-
-    font-size: 11px;
-
-}
-
-
-.aircraft-info a {
-
-    display: block;
-
-    margin-top: 20px;
-
-    color: var(--purple);
-
-    font-size: 11px;
-
-}
-
-
-/* =========================================================
-   DESTINOS
-========================================================= */
-
-.destination-large {
-
-    position: relative;
-
-    display: flex;
-
-    align-items: flex-end;
-
-    height: 190px;
-
-    margin-bottom: 16px;
-
-    overflow: hidden;
-
-    border-radius: 18px;
-
-    background-position: center;
-
-    background-size: cover;
-
-}
-
-
-.destination-large::after {
-
-    content: "";
-
-    position: absolute;
-
-    inset: 0;
-
-    background: linear-gradient(
-        transparent,
-        rgba(0, 0, 0, 0.9)
-    );
-
-}
-
-
-.destination-large div {
-
-    position: relative;
-
-    z-index: 2;
-
-    padding: 20px;
-
-}
-
-
-.destination-large p {
-
-    color: var(--purple);
-
-    font-size: 9px;
-
-    letter-spacing: 1px;
-
-}
-
-
-.destination-large h3 {
-
-    margin-top: 5px;
-
-    font-family: Georgia, "Times New Roman", serif;
-
-    font-size: 30px;
-
-    font-weight: normal;
-
-}
-
-
-/* =========================================================
-   SERVIÇOS
-========================================================= */
-
-.service-list {
-
-    display: flex;
-
-    flex-direction: column;
-
-}
-
-
-.service-list article {
-
-    display: flex;
-
-    gap: 17px;
-
-    padding: 21px 0;
-
-    border-bottom: 1px solid #202020;
-
-}
-
-
-.service-list article > span {
-
-    flex-shrink: 0;
-
-    width: 42px;
-
-    height: 42px;
-
-    display: flex;
-
-    align-items: center;
-
-    justify-content: center;
-
-    border: 1px solid #38274a;
-
-    border-radius: 50%;
-
-    color: var(--purple);
-
-}
-
-
-.service-list h3 {
-
-    margin-bottom: 7px;
-
-    font-size: 14px;
-
-    font-weight: normal;
-
-}
-
-
-.service-list p {
-
-    color: #777777;
-
-    font-size: 11px;
-
-    line-height: 1.5;
-
-}
-
-
-/* =========================================================
-   PERFIL
-========================================================= */
-
-.profile {
-
-    padding: 10px 0 35px;
-
-    text-align: center;
-
-}
-
-
-.profile-avatar {
-
-    width: 80px;
-
-    height: 80px;
-
-    display: flex;
-
-    align-items: center;
-
-    justify-content: center;
-
-    margin: 0 auto 15px;
-
-    border: 1px solid #4a3562;
-
-    border-radius: 50%;
-
-    background: #171022;
-
-    color: var(--gold);
-
-    font-family: Georgia, "Times New Roman", serif;
-
-    font-size: 30px;
-
-}
-
-
-.profile h2 {
-
-    color: white;
-
-    font-family: Georgia, "Times New Roman", serif;
-
-    font-size: 23px;
-
-    font-weight: normal;
-
-}
-
-
-.profile p {
-
-    margin-top: 5px;
-
-    color: var(--purple);
-
-    font-size: 10px;
-
-}
-
-
-.profile-options {
-
-    display: flex;
-
-    flex-direction: column;
-
-}
-
-
-.profile-options a {
-
-    display: grid;
-
-    grid-template-columns: 30px 1fr 20px;
-
-    align-items: center;
-
-    gap: 10px;
-
-    min-height: 62px;
-
-    border-bottom: 1px solid #202020;
-
-}
-
-
-.profile-options a > span {
-
-    color: var(--purple);
-
-}
-
-
-.profile-options a b {
-
-    color: #666666;
-
-    font-size: 20px;
-
-    text-align: right;
-
-}
-
-
-.profile-options a:hover {
-
-    color: var(--gold);
-
-}
-
-
-/* =========================================================
-   CONFIGURAÇÕES
-========================================================= */
-
-.settings-list {
-
-    display: flex;
-
-    flex-direction: column;
-
-}
-
-
-.settings-list a {
-
-    display: flex;
-
-    align-items: center;
-
-    justify-content: space-between;
-
-    padding: 20px 0;
-
-    border-bottom: 1px solid #202020;
-
-}
-
-
-.settings-list a div {
-
-    display: flex;
-
-    flex-direction: column;
-
-    gap: 5px;
-
-}
-
-
-.settings-list strong {
-
-    font-size: 13px;
-
-    font-weight: normal;
-
-}
-
-
-.settings-list small {
-
-    color: #666666;
-
-    font-size: 10px;
-
-}
-
-
-.settings-list b {
-
-    color: #666666;
-
-    font-size: 20px;
-
-}
-
-
-/* =========================================================
-   SUPORTE
-========================================================= */
-
-.support-card {
-
-    display: grid;
-
-    grid-template-columns: 45px 1fr 20px;
-
-    align-items: center;
-
-    gap: 15px;
-
-    min-height: 80px;
-
-    margin-bottom: 12px;
-
-    padding: 15px;
-
-    border: 1px solid #242024;
-
-    border-radius: 14px;
-
-    background: #0c0c0c;
-
-}
-
-
-.support-card > span {
-
-    width: 40px;
-
-    height: 40px;
-
-    display: flex;
-
-    align-items: center;
-
-    justify-content: center;
-
-    border-radius: 50%;
-
-    background: #171022;
-
-    color: var(--purple);
-
-}
-
-
-.support-card h3 {
-
-    margin-bottom: 5px;
-
-    font-size: 13px;
-
-    font-weight: normal;
-
-}
-
-
-.support-card p {
-
-    color: #666666;
-
-    font-size: 10px;
-
-}
-
-
-.support-card b {
-
-    color: #666666;
-
-    font-size: 20px;
-
-}
-
-
-.support-card:hover {
-
-    border-color: #4a3562;
-
-}
-
-
-/* =========================================================
-   RESPONSIVIDADE
-========================================================= */
-
-@media (min-width: 600px) {
-
-    .screen {
-
-        min-height: 100vh;
-
-        box-shadow:
-            0 0 60px rgba(0, 0, 0, 0.5);
-
-    }
-    /* =========================================================
-   PAGAMENTO
-========================================================= */
-
-.payment-route {
-
-    display: grid;
-
-    grid-template-columns: 1fr 40px 1fr;
-
-    align-items: center;
-
-    margin-top: 25px;
-
-    padding: 25px 0;
-
-    border-bottom: 1px solid #242024;
-
-}
-
-
-.payment-route div {
-
-    display: flex;
-
-    flex-direction: column;
-
-}
-
-
-.payment-route div:last-child {
-
-    text-align: right;
-
-}
-
-
-.payment-route strong {
-
-    color: white;
-
-    font-size: 34px;
-
-    font-weight: normal;
-
-}
-
-
-.payment-route small {
-
-    margin-top: 5px;
-
-    color: #777777;
-
-    font-size: 10px;
-
-}
-
-
-.payment-route > span {
-
-    color: var(--purple);
-
-    text-align: center;
-
-}
-
-
-.payment-info {
-
-    display: flex;
-
-    flex-direction: column;
-
-    gap: 8px;
-
-    padding: 18px 0;
-
-    color: #777777;
-
-    font-size: 10px;
-
-}
-
-
-.payment-label {
-
-    margin-top: 25px;
-
-    margin-bottom: 12px;
-
-}
-
-
-.payment-method {
-
-    display: flex;
-
-    align-items: center;
-
-    gap: 14px;
-
-    padding: 17px;
-
-    border: 1px solid #30233e;
-
-    border-radius: 12px;
-
-    background: #0d0d0d;
-
-}
-
-
-.card-icon {
-
-    width: 40px;
-
-    height: 27px;
-
-    display: flex;
-
-    align-items: center;
-
-    justify-content: center;
-
-    border-radius: 5px;
-
-    background: #222222;
-
-    color: var(--gold);
-
-}
-
-
-.payment-method div:nth-child(2) {
-
-    display: flex;
-
-    flex-direction: column;
-
-    gap: 5px;
-
-    flex: 1;
-
-}
-
-
-.payment-method strong {
-
-    font-size: 12px;
-
-    font-weight: normal;
-
-}
-
-
-.payment-method small {
-
-    color: #666666;
-
-    font-size: 9px;
-
-}
-
-
-.payment-method a {
-
-    color: var(--purple);
-
-    font-size: 10px;
-
-}
-
-
-.total-payment {
-
-    display: flex;
-
-    align-items: flex-end;
-
-    justify-content: space-between;
-
-    margin-top: 40px;
-
-    padding-bottom: 20px;
-
-    border-bottom: 1px solid #242024;
-
-}
-
-
-.total-payment span {
-
-    color: #777777;
-
-    font-size: 10px;
-
-    letter-spacing: 1px;
-
-}
-
-
-.total-payment strong {
-
-    color: var(--gold);
-
-    font-family: Georgia, "Times New Roman", serif;
-
-    font-size: 25px;
-
-    font-weight: normal;
-
-}
-
-
-/* =========================================================
-   AVIÃO CHEGANDO
-========================================================= */
-
-.arrival-screen {
-
-    position: relative;
-
-    min-height: 100vh;
-
-    overflow: hidden;
-
-    background: #050505;
-
-}
-
-
-.arrival-background {
-
-    position: absolute;
-
-    inset: 0;
-
-    background-image:
-
-        linear-gradient(
-            to bottom,
-            rgba(5, 5, 5, 0.35),
-            rgba(5, 5, 5, 0.65) 45%,
-            #050505 90%
-        ),
-
-        url("imagens/aviao.jpg");
-
-    background-position: center;
-
-    background-size: cover;
-
-    opacity: 0.8;
-
-}
-
-
-.arrival-content {
-
-    position: relative;
-
-    z-index: 2;
-
-    min-height: 100vh;
-
-    display: flex;
-
-    flex-direction: column;
-
-    align-items: center;
-
-    padding: 35px 25px 30px;
-
-    text-align: center;
-
-}
-
-
-.arrival-logo {
-
-    align-self: flex-start;
-
-    color: var(--gold);
-
-    font-family:
-        Georgia,
-        "Times New Roman",
-        serif;
-
-    font-size: 21px;
-
-    letter-spacing: 1px;
-
-}
-
-
-.arrival-icon {
-
-    width: 60px;
-
-    height: 60px;
-
-    display: flex;
-
-    align-items: center;
-
-    justify-content: center;
-
-    margin-top: 60px;
-
-    border: 1px solid #4b3760;
-
-    border-radius: 50%;
-
-    color: var(--gold);
-
-    font-size: 22px;
-
-}
-
-
-.arrival-content .section-label {
-
-    margin-top: 25px;
-
-}
-
-
-.arrival-content h1 {
-
-    margin-top: 10px;
-
-    color: white;
-
-    font-family:
-        Georgia,
-        "Times New Roman",
-        serif;
-
-    font-size: 31px;
-
-    font-weight: normal;
-
-    line-height: 1.2;
-
-}
-
-
-.arrival-aircraft {
-
-    margin-top: 12px;
-
-    color: var(--purple);
-
-    font-size: 11px;
-
-}
-
-
-.arrival-route {
-
-    width: 100%;
-
-    display: grid;
-
-    grid-template-columns: 1fr 1.5fr 1fr;
-
-    align-items: center;
-
-    margin-top: 45px;
-
-    padding: 20px 0;
-
-    border-top: 1px solid #2c2530;
-
-    border-bottom: 1px solid #2c2530;
-
-}
-
-
-.arrival-route span {
-
-    display: flex;
-
-    flex-direction: column;
-
-    gap: 5px;
-
-    color: white;
-
-    font-size: 24px;
-
-}
-
-
-.arrival-route span:last-child {
-
-    text-align: right;
-
-}
-
-
-.arrival-route small {
-
-    color: #777777;
-
-    font-size: 8px;
-
-}
-
-
-.arrival-route div {
-
-    color: var(--purple);
-
-    font-size: 9px;
-
-    white-space: nowrap;
-
-}
-
-
-.arrival-time {
-
-    display: flex;
-
-    flex-direction: column;
-
-    margin-top: 35px;
-
-}
-
-
-.arrival-time small {
-
-    color: #777777;
-
-    font-size: 9px;
-
-    letter-spacing: 1px;
-
-}
-
-
-.arrival-time strong {
-
-    margin-top: 5px;
-
-    color: var(--gold);
-
-    font-family:
-        Georgia,
-        "Times New Roman",
-        serif;
-
-    font-size: 42px;
-
-    font-weight: normal;
-
-}
-
-
-.arrival-message {
-
-    max-width: 230px;
-
-    margin-top: 10px;
-
-    color: #888888;
-
-    font-size: 11px;
-
-    line-height: 1.5;
-
-}
-
-
-.arrival-data {
-
-    width: 100%;
-
-    display: grid;
-
-    grid-template-columns: 1fr 1fr;
-
-    margin-top: 35px;
-
-    border-top: 1px solid #292329;
-
-    border-bottom: 1px solid #292329;
-
-}
-
-
-.arrival-data div {
-
-    display: flex;
-
-    flex-direction: column;
-
-    gap: 7px;
-
-    padding: 17px 10px;
-
-}
-
-
-.arrival-data div + div {
-
-    border-left: 1px solid #292329;
-
-}
-
-
-.arrival-data small {
-
-    color: #666666;
-
-    font-size: 8px;
-
-    letter-spacing: 1px;
-
-}
-
-
-.arrival-data strong {
-
-    color: white;
-
-    font-size: 11px;
-
-    font-weight: normal;
-
-}
-
-
-.arrival-button {
-
-    width: 100%;
-
-    height: 52px;
-
-    margin-top: auto;
-
-    border-radius: 11px;
-
-    font-size: 11px;
-
-}
+/* DESKTOP */
 
+@media(min-width:600px){
+    .screen{box-shadow:0 0 60px #0008}
 }
